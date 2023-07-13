@@ -121,6 +121,6 @@ import insertAgendamentosRecorrentesCliete from './api/insert/recorretes.js'
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 
 // Inicia o servidor
-app.listen(port, () => {
-console.log(`Servidor rodando em http://localhost:${port}`);
-});
+// app.listen(port, () => {
+// console.log(`Servidor rodando em http://localhost:${port}`);
+// });
