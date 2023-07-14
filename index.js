@@ -1,10 +1,10 @@
 // index.js
-import express from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
 // import cron from 'node-cron';
-import db from './db.js';
-import { inserirHorarios } from './rotina.js';
-import { inserirAgendamentosAutomaticos} from './recurrence.js'
+// import db from './db.js';
+// import { inserirHorarios } from './rotina.js';
+// import { inserirAgendamentosAutomaticos} from './recurrence.js'
 
 const app = express();
 app.use(express.json());
@@ -121,10 +121,10 @@ app.get('/', (req, res) =>{
 
 
 
-app.post('/rotina-recorrentes', (req, res) => {
-inserirAgendamentosAutomaticos();
-res.send('Rotina de agendamentos acionada com sucesso!');
-});
+// app.post('/rotina-recorrentes', (req, res) => {
+// inserirAgendamentosAutomaticos();
+// res.send('Rotina de agendamentos acionada com sucesso!');
+// });
   
 
 module.exports = app;
