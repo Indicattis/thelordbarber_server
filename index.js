@@ -7,11 +7,14 @@ import db from './db.js';
 import { inserirAgendamentosAutomaticos} from './recurrence.js'
 // import client from './chatbot.js'; // Importe o chatbot
 
+
+const port = process.env.PORT || 8800
+
 const app = express();
-const port = 8800;
+// const port = 8800;
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
 }));
 
 app.use(express.json());
@@ -22,7 +25,7 @@ cron.schedule('0 0 15 * *', () => {
             console.error('Erro ao obter os IDs dos barbeiros:', error);
             return;
         }
-
+        
         const idBarbeiros = results.map((row) => row.id);
         inserirHorarios(idBarbeiros);
     });
@@ -112,15 +115,17 @@ app.post('/rotina-recorrentes', (req, res) => {
 inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
-
+  
 
 import insertHorario from './api/insert/horarios.js'
 app.use('/insert-horarios-barbeiro', insertHorario)
 
 import insertAgendamentosRecorrentesCliete from './api/insert/recorretes.js'
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
-
+  
 // Inicia o servidor
-// app.listen(port, () => {
-// console.log(`Servidor rodando em http://localhost:${port}`);
-// });
+app.listen(port, () => {
+console.log(`Servidor rodando em http://localhost:${port}`);
+});
+
+

@@ -17,7 +17,7 @@ import mysql from "mysql"
 // });
 
 const db = mysql.createConnection({
-    host: 'thelordbarber.ctcphfoauwaz.us-east-2.rds.amazonaws.com',
+    host: 'thelordbarber.cbmth66g8ff4.sa-east-1.rds.amazonaws.com',
     user: 'admin',
     password: 'd3vl1n3w3b',
     database: 'thelordbarber',
