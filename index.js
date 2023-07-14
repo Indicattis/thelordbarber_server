@@ -43,8 +43,8 @@ app.get('/', (req, res) =>{
 // import barbeirosRouter from './api/barbeiros.js';
 // app.use('/barbeiros', barbeirosRouter);
 
-// import clientesRouter from './api/clientes.js';
-// app.use('/clientes', clientesRouter);
+const clientesRouter = require ('./api/clientes.js');
+app.use('/clientes', clientesRouter);
 
 // import agendamentosBarber from './api/data/agendamentos-barber.js'
 // app.use('/agendamentos-barbeiro-dia', agendamentosBarber);
@@ -77,8 +77,8 @@ app.get('/', (req, res) =>{
 // app.use('/insights-mes', insightsMonth);
 
 
-import adminLogin from './api/auth/admin-login.js'
-app.use('/admin-login', adminLogin)
+const adminLogin = require ('./api/auth/admin-login.js');
+app.use('/admin-login', adminLogin);
 
 // import adminSetAll from './api/modify/admin-all.js'
 // app.use('/admin-set-all', adminSetAll)

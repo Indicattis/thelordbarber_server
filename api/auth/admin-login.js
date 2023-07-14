@@ -1,14 +1,12 @@
 
 
-import express from 'express';
-import db from '../../db.js';
-import jwt  from "jsonwebtoken";
-import cors from 'cors';
+const express = require ('express');
+const db = require ('../../db.js');
+const jwt  = require ("jsonwebtoken");
+const cors = require ('cors');
 
 const app = express();
-app.use(cors({
-origin: 'http://localhost:3000'
-}));
+app.use(cors());
   
   
 
