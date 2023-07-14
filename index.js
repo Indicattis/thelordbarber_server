@@ -1,23 +1,20 @@
 // index.js
 import express from 'express';
 import cors from 'cors';
-import { inserirHorarios } from './rotina.js';
 import cron from 'node-cron';
 import db from './db.js';
+import { inserirHorarios } from './rotina.js';
 import { inserirAgendamentosAutomaticos} from './recurrence.js'
-// import client from './chatbot.js'; // Importe o chatbot
-
-
-const port = process.env.PORT || 8800
 
 const app = express();
+app.use(express.json());
+app.use(cors());
+
+const port = process.env.PORT || 9001
+
 // const port = 8800;
 
-app.use(cors({
-    origin: '*'
-}));
 
-app.use(express.json());
 
 cron.schedule('0 0 15 * *', () => {
     db.query('SELECT id FROM barbeiros', (error, results) => {
@@ -123,9 +120,6 @@ app.use('/insert-horarios-barbeiro', insertHorario)
 import insertAgendamentosRecorrentesCliete from './api/insert/recorretes.js'
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
   
-// Inicia o servidor
-app.listen(port, () => {
-console.log(`Servidor rodando em http://localhost:${port}`);
-});
+
 
 
