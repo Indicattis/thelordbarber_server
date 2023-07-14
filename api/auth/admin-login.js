@@ -33,4 +33,4 @@ router.post('/', (req, res) => {
     });
 });
 
-export default router;
+module.exports = router;
