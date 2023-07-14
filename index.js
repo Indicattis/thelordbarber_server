@@ -32,6 +32,9 @@ cron.schedule('0 0 15 * *', () => {
     executarRotinaAgendamentos()
 })
 
+app.get('/', (res, req) =>{
+    return res.json('hello')
+})
 // Roteamento
 // import horariosRouter from './api/horarios.js';
 // app.use('/horarios', horariosRouter);
