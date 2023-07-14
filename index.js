@@ -1,7 +1,7 @@
 // index.js
 const express = require('express');
 const cors = require('cors');
-import cron from 'node-cron';
+// import cron from 'node-cron';
 // import db from './db.js';
 // import { inserirHorarios } from './rotina.js';
 // import { inserirAgendamentosAutomaticos} from './recurrence.js'
@@ -77,8 +77,8 @@ app.get('/', (req, res) =>{
 // app.use('/insights-mes', insightsMonth);
 
 
-// import adminLogin from './api/auth/admin-login.js'
-// app.use('/admin-login', adminLogin)
+import adminLogin from './api/auth/admin-login.js'
+app.use('/admin-login', adminLogin)
 
 // import adminSetAll from './api/modify/admin-all.js'
 // app.use('/admin-set-all', adminSetAll)
