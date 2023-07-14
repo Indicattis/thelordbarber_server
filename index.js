@@ -1,7 +1,7 @@
 // index.js
 import express from 'express';
 import cors from 'cors';
-import cron from 'node-cron';
+// import cron from 'node-cron';
 import db from './db.js';
 import { inserirHorarios } from './rotina.js';
 import { inserirAgendamentosAutomaticos} from './recurrence.js'
