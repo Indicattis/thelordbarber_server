@@ -16,21 +16,21 @@ const port = process.env.PORT || 9001
 
 
 
-cron.schedule('0 0 15 * *', () => {
-    db.query('SELECT id FROM barbeiros', (error, results) => {
-        if (error) {
-            console.error('Erro ao obter os IDs dos barbeiros:', error);
-            return;
-        }
+// cron.schedule('0 0 15 * *', () => {
+//     db.query('SELECT id FROM barbeiros', (error, results) => {
+//         if (error) {
+//             console.error('Erro ao obter os IDs dos barbeiros:', error);
+//             return;
+//         }
         
-        const idBarbeiros = results.map((row) => row.id);
-        inserirHorarios(idBarbeiros);
-    });
-});
+//         const idBarbeiros = results.map((row) => row.id);
+//         inserirHorarios(idBarbeiros);
+//     });
+// });
 
-cron.schedule('0 0 15 * *', () => {
-    executarRotinaAgendamentos()
-})
+// cron.schedule('0 0 15 * *', () => {
+//     executarRotinaAgendamentos()
+// })
 
 app.get('/', (res, req) =>{
     return res.json('hello')
