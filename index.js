@@ -12,6 +12,11 @@ app.use(cors());
 
 const port = process.env.PORT || 9001
 
+
+app.get('/', (req, res) =>{
+    return res.json('hello');
+});
+
 // const port = 8800;
 
 
@@ -31,10 +36,6 @@ const port = process.env.PORT || 9001
 // cron.schedule('0 0 15 * *', () => {
 //     executarRotinaAgendamentos()
 // })
-
-app.get('/', (res, req) =>{
-    return res.json('hello')
-})
 // Roteamento
 // import horariosRouter from './api/horarios.js';
 // app.use('/horarios', horariosRouter);
