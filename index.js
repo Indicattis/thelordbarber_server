@@ -40,8 +40,8 @@ app.get('/', (req, res) =>{
 // import horariosRouter from './api/horarios.js';
 // app.use('/horarios', horariosRouter);
 
-// import barbeirosRouter from './api/barbeiros.js';
-// app.use('/barbeiros', barbeirosRouter);
+const barbeirosRouter = require ('./api/barbeiros.js');
+app.use('/barbeiros', barbeirosRouter);
 
 const clientesRouter = require ('./api/clientes.js');
 app.use('/clientes', clientesRouter);
