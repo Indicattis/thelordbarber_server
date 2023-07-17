@@ -4,7 +4,7 @@ const cors = require('cors');
 // import cron from 'node-cron';
 // import db from './db.js';
 // import { inserirHorarios } from './rotina.js';
-// import { inserirAgendamentosAutomaticos} from './recurrence.js'
+const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 
 const app = express();
 app.use(express.json());
@@ -70,61 +70,57 @@ app.use('/cliente-phone', getClientPhone);
 const getAgendamento = require ('./api/get/agendamento.js');
 app.use('/agendamento-id', getAgendamento);
 
-// import insightsBarber from './api/analytics/insights-barber.js'
-// app.use('/horarios-barbeiro', insightsBarber);
+const insightsBarber = require ('./api/analytics/insights-barber.js');
+app.use('/horarios-barbeiro', insightsBarber);
 
-// import insightsMonth from './api/analytics/insights-mes.js'
-// app.use('/insights-mes', insightsMonth);
-
+const insightsMonth = require ('./api/analytics/insights-mes.js');
+app.use('/insights-mes', insightsMonth);
 
 const adminLogin = require ('./api/auth/admin-login.js');
 app.use('/admin-login', adminLogin);
 
-// import adminSetAll from './api/modify/admin-all.js'
-// app.use('/admin-set-all', adminSetAll)
+const adminSetAll = require ('./api/modify/admin-all.js');
+app.use('/admin-set-all', adminSetAll);
 
-// import adminSetPassword from './api/modify/admin-password.js'
-// app.use('/admin-set-password', adminSetPassword)
+const adminSetPassword = require ('./api/modify/admin-password.js');
+app.use('/admin-set-password', adminSetPassword);
 
-// import clientSetAll from './api/modify/client-all.js'
-// app.use('/cliente-set-all', clientSetAll)
+const clientSetAll = require ('./api/modify/client-all.js');
+app.use('/cliente-set-all', clientSetAll);
 
+const insertBarber = require ('./api/insert/barber.js');
+app.use('/post-insert-barber', insertBarber);
 
-// import insertBarber from './api/insert/barber.js'
-// app.use('/post-insert-barber', insertBarber)
+const insertClient = require ('./api/insert/client.js');
+app.use('/post-insert-client', insertClient);
 
+const insertAgendamento = require ('./api/insert/agendamento.js');
+app.use('/post-insert-agendamento', insertAgendamento);
 
-// import insertClient from './api/insert/client.js'
-// app.use('/post-insert-client', insertClient)
+const adminSetImage = require ('./api/modify/admin-image.js');
+app.use('/admin-set-image', adminSetImage);
 
-// import insertAgendamento from './api/insert/agendamento.js'
-// app.use('/post-insert-agendamento', insertAgendamento)
+const deleteAgendamento = require ('./api/delete/agendamento.js');
+app.use('/post-delete-agendamento', deleteAgendamento);
 
-// import adminSetImage from './api/modify/admin-image.js'
-// app.use('/admin-set-image', adminSetImage)
+const deleteCliente = require ('./api/delete/cliente.js');
+app.use('/post-delete-cliente', deleteCliente);
 
-// import deleteAgendamento from './api/delete/agendamento.js'
-// app.use('/post-delete-agendamento', deleteAgendamento)
+const deleteBarbeiro = require ('./api/delete/barbeiro.js');
+app.use('/post-delete-barbeiro', deleteBarbeiro);
 
-// import deleteCliente from './api/delete/cliente.js'
-// app.use('/post-delete-cliente', deleteCliente)
+const insertHorario = require ('./api/insert/horarios.js');
+app.use('/insert-horarios-barbeiro', insertHorario)
 
-// import deleteBarbeiro from './api/delete/barbeiro.js'
-// app.use('/post-delete-barbeiro', deleteBarbeiro)
-
-
-// import insertHorario from './api/insert/horarios.js'
-// app.use('/insert-horarios-barbeiro', insertHorario)
-
-// import insertAgendamentosRecorrentesCliete from './api/insert/recorretes.js'
-// app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
+const insertAgendamentosRecorrentesCliete = require ('./api/insert/recorretes.js')
+app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 
 
 
-// app.post('/rotina-recorrentes', (req, res) => {
-// inserirAgendamentosAutomaticos();
-// res.send('Rotina de agendamentos acionada com sucesso!');
-// });
+app.post('/rotina-recorrentes', (req, res) => {
+inserirAgendamentosAutomaticos();
+res.send('Rotina de agendamentos acionada com sucesso!');
+});
   
 
 module.exports = app;

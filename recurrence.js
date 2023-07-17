@@ -1,12 +1,10 @@
-import db from './db.js';
-import express from 'express';
-import cors from 'cors'
+const express = require ('express');
+const db = require ('./db.js');
+const cors = require ('cors');
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
+app.use(cors());
 
 function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const today = new Date();
@@ -54,14 +52,8 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
 }
 
 
-
-
-
-
-
-
 // Função para inserir os agendamentos automáticos para os clientes com recurrence = 1
-export function inserirAgendamentosAutomaticos() {
+function inserirAgendamentosAutomaticos() {
     const query = `SELECT * FROM clientes WHERE recurrence = 1`;
 
     db.query(query, (error, results) => {
@@ -121,3 +113,5 @@ export function inserirAgendamentosAutomaticos() {
         });
     });
 }
+
+module.exports = inserirAgendamentosAutomaticos;

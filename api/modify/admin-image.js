@@ -1,15 +1,13 @@
 
       
-import multer from 'multer'
-import express from 'express';
-import db from '../../db.js';
-import cors from 'cors';
+const multer = require ('multer')
+const express = require ('express');
+const db = require ('../../db.js');
+const cors = require ('cors');
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-    }));
+app.use(cors());
 
 const router = express.Router();
     
@@ -44,5 +42,4 @@ router.post('/:barber_id', upload.single('image'), (req, res) => {
     });
 });
 
-
-export default router;
+module.exports = router;

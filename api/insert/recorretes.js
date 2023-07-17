@@ -1,12 +1,10 @@
-import db from '../../db.js';
-import express from 'express';
-import cors from 'cors'
+const express = require ('express');
+const db = require ('../../db.js');
+const cors = require ('cors');
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
+app.use(cors());
 
 function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const today = new Date();
@@ -120,5 +118,4 @@ router.post('/', (req, res) => {
 })
 
 
-
-export default router;
+module.exports = router;

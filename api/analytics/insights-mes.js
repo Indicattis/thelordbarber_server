@@ -1,5 +1,5 @@
-import express from 'express';
-import db from '../../db.js';
+const express = require ('express');
+const db = require ('../../db.js');
 
 const router = express.Router();
 
@@ -30,4 +30,4 @@ router.get('/:month', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;
