@@ -65,7 +65,7 @@ const getClientName = require ('./api/get/cliente-name.js');
 app.use('/cliente-name', getClientName);
 
 const getClientNameOnly = require ('./api/get/cliente-name-only.js');
-app.use('/cliente-name-only', getClientName);
+app.use('/cliente-name-only', getClientNameOnly);
 
 const getClientPhone = require ('./api/get/cliente-number.js');
 app.use('/cliente-phone', getClientPhone);
