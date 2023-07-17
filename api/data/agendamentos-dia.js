@@ -1,13 +1,10 @@
-import express from 'express';
-import db from '../../db.js';
-import dayjs from 'dayjs';
-import cors from 'cors';
+const express = require ('express');
+const db = require ('../../db.js');
+const cors = require ('cors');
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-    }));
+app.use(cors());
 
 const router = express.Router();
 
@@ -29,4 +26,4 @@ router.get('/:day', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

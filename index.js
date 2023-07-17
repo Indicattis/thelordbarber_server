@@ -55,20 +55,20 @@ app.use('/agendamentos-cliente', agendamentosCliente);
 const agendamentosMes = require ('./api/data/agendamentos-mes.js');
 app.use('/agendamentos-mes', agendamentosMes);
 
-// import agendamentosDia from './api/data/agendamentos-dia.js'
-// app.use('/agendamentos-dia', agendamentosDia);
+const agendamentosDia = require ('./api/data/agendamentos-dia.js');
+app.use('/agendamentos-dia', agendamentosDia);
 
-// import getClientDetails from './api/get/cliente.js'
-// app.use('/clientes-id', getClientDetails);
+const getClientDetails = require ('./api/get/cliente.js');
+app.use('/clientes-id', getClientDetails);
 
-// import getClientName from './api/get/cliente-name.js'
-// app.use('/cliente-name', getClientName);
+const getClientName = require ('./api/get/cliente-name.js');
+app.use('/cliente-name', getClientName);
 
-// import getClientPhone from './api/get/cliente-number.js'
-// app.use('/cliente-phone', getClientPhone);
+const getClientPhone = require ('./api/get/cliente-number.js');
+app.use('/cliente-phone', getClientPhone);
 
-// import getAgendamento from './api/get/agendamento.js'
-// app.use('/agendamento-id', getAgendamento);
+const getAgendamento = require ('./api/get/agendamento.js');
+app.use('/agendamento-id', getAgendamento);
 
 // import insightsBarber from './api/analytics/insights-barber.js'
 // app.use('/horarios-barbeiro', insightsBarber);

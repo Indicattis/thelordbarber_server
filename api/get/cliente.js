@@ -1,6 +1,7 @@
 // clientes.js
-import express from 'express';
-import db from '../../db.js';
+
+const express = require ('express');
+const db = require ('../../db.js');
 
 const router = express.Router();
 
@@ -13,5 +14,4 @@ router.get('/:id', (req, res) => {
         return res.json(result);
     });
 });
-
-export default router;
+module.exports = router;
