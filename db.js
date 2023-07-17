@@ -30,4 +30,5 @@ const db = mysql.createConnection({
     }
     console.log('Conexão bem-sucedida!');
 });
-export default db
+
+module.exports = db;
