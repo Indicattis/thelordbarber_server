@@ -1,4 +1,4 @@
-import mysql from "mysql"
+const mysql = require ("mysql")
 
 // Configuração da conexão com o banco de dados
 // const db = mysql.createConnection({
