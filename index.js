@@ -46,7 +46,7 @@ app.use('/barbeiros', barbeirosRouter);
 const clientesRouter = require ('./api/clientes.js');
 app.use('/clientes', clientesRouter);
 
-const agendamentosBarber = require('./api/data/agendamentos-barber.js)');
+const agendamentosBarber = require('./api/data/agendamentos-barber.js');
 app.use('/agendamentos-barbeiro-dia', agendamentosBarber);
 
 const agendamentosCliente = require ('./api/data/agendamentos-cliente.js');
