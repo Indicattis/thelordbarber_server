@@ -9,22 +9,21 @@ app.use(cors());
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  const { phone } = req.body;
-
-  const checkQuery = `SELECT id, name FROM clientes WHERE phone = ?`;
-  db.query(checkQuery, [phone], (error, results) => {
-    if (error) {
-      res.status(500).json({ error: 'Erro ao verificar número de telefone.' });
-    } else {
-      if (results.length > 0) {
-        const id = results[0].id;
-        const name = results[0].name;
-        res.status(200).json({ exists: true, id, name });
+    const { cliente, id } = req.query;
+  
+    const checkQuery = 'SELECT name FROM clientes WHERE phone = ? AND id = ?';
+    db.query(checkQuery, [cliente, id], (error, results) => {
+      if (error) {
+        res.status(500).json({ error: 'Erro ao verificar número de telefone.' });
       } else {
-        res.status(200).json({ exists: false, id: null, name: '' });
+        if (results.length > 0) {
+          const name = results[0].name;
+          res.status(200).json({ name });
+        } else {
+          res.status(200).json({ name: '-' });
+        }
       }
-    }
+    });
   });
-});
 
 module.exports = router;
