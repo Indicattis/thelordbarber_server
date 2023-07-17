@@ -37,8 +37,8 @@ app.get('/', (req, res) =>{
 //     executarRotinaAgendamentos()
 // })
 // Roteamento
-// import horariosRouter from './api/horarios.js';
-// app.use('/horarios', horariosRouter);
+const horariosRouter = require ('./api/horarios.js');
+app.use('/horarios', horariosRouter);
 
 const barbeirosRouter = require ('./api/barbeiros.js');
 app.use('/barbeiros', barbeirosRouter);
@@ -46,14 +46,14 @@ app.use('/barbeiros', barbeirosRouter);
 const clientesRouter = require ('./api/clientes.js');
 app.use('/clientes', clientesRouter);
 
-// import agendamentosBarber from './api/data/agendamentos-barber.js'
-// app.use('/agendamentos-barbeiro-dia', agendamentosBarber);
+const agendamentosBarber = require('./api/data/agendamentos-barber.js)');
+app.use('/agendamentos-barbeiro-dia', agendamentosBarber);
 
-// import agendamentosCliente from './api/data/agendamentos-cliente.js'
-// app.use('/agendamentos-cliente', agendamentosCliente);
+const agendamentosCliente = require ('./api/data/agendamentos-cliente.js');
+app.use('/agendamentos-cliente', agendamentosCliente);
 
-// import agendamentosMes from './api/data/agendamentos-mes.js'
-// app.use('/agendamentos-mes', agendamentosMes);
+const agendamentosMes = require ('./api/data/agendamentos-mes.js');
+app.use('/agendamentos-mes', agendamentosMes);
 
 // import agendamentosDia from './api/data/agendamentos-dia.js'
 // app.use('/agendamentos-dia', agendamentosDia);
