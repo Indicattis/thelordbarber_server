@@ -9,10 +9,10 @@ app.use(cors());
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    const id_cliente = req.query.id_cliente;
+    const { id } = req.body;
   
     const checkQuery = `SELECT name FROM clientes WHERE id = ?`;
-    db.query(checkQuery, [id_cliente], (error, results) => {
+    db.query(checkQuery, [id], (error, results) => {
       if (error) {
         res.status(500).json({ error: 'Erro ao verificar número de telefone.' });
       } else {
