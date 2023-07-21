@@ -1,19 +1,17 @@
-
-
-const express = require ('express');
-const db = require ('../../db.js');
-const jwt  = require ("jsonwebtoken");
+const express = require('express');
+const db = require('../../db.js');
+const jwt = require("jsonwebtoken");
 const configureCors = require('../../cors.js');
+
 const app = express();
 app.use(express.json());
 
-  
-  
-
+// Aplicar o middleware do CORS antes de definir as rotas
+app.use(configureCors);
 
 const router = express.Router();
 
-router.post('/', configureCors, (req, res) => {
+router.post('/', (req, res) => {
     const { login, password } = req.body;
 
     const query = `SELECT id, cargo, nome, imagem FROM barbeiros WHERE login = ? AND senha = ?`;
