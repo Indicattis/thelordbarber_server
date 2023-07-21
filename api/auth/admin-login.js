@@ -3,7 +3,7 @@
 const express = require ('express');
 const db = require ('../../db.js');
 const jwt  = require ("jsonwebtoken");
-const corsConfig = require('../../index.js');
+const configureCors = require('../../cors.js');
 const app = express();
 app.use(express.json());
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 const router = express.Router();
 
-router.post('/', corsConfig, (req, res) => {
+router.post('/', configureCors, (req, res) => {
     const { login, password } = req.body;
 
     const query = `SELECT id, cargo, nome, imagem FROM barbeiros WHERE login = ? AND senha = ?`;

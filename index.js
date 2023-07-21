@@ -1,6 +1,5 @@
 // index.js
 const express = require('express');
-const cors = require('cors');
 // import cron from 'node-cron';
 // import db from './db.js';
 // import { inserirHorarios } from './rotina.js';
@@ -8,13 +7,7 @@ const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 
 const app = express();
 app.use(express.json());
-const corsOptions = {
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-};
-
-app.use(cors(corsOptions));
+const configureCors = require('./cors.js');
 
 
 const port = process.env.PORT || 9001
@@ -134,5 +127,3 @@ res.send('Rotina de agendamentos acionada com sucesso!');
   
 
 module.exports = app;
-
-module.exports = cors(corsOptions);
