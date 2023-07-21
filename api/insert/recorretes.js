@@ -27,35 +27,43 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const startTime = new Date(`1970-01-01T${recurrence_hour}`);
 
     if (recurrence_mode === 'semanal') {
-        for (let i = 0; i < 5; i++) {
-            const day = today.getDate() + (recurrenceDayIndex - today.getDay()) - 2 + i * 7;
-            if (day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate()) {
-                const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
+        // Percorre todos os dias do mês seguinte e adiciona as segundas-feiras
+        for (let day = 1; day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate(); day++) {
+            const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
+            if (nextDate.getDay() === recurrenceDayIndex) {
                 nextDates.push(nextDate);
             }
         }
     } else if (recurrence_mode === 'quinzenal') {
+        // Adiciona a primeira data de agendamento
         const firstDayOfMonth = new Date(nextMonthYear, nextMonthMonth, 1);
         let firstDay = firstDayOfMonth.getDate();
         const firstWeekday = firstDayOfMonth.getDay();
-
         if (firstWeekday <= recurrenceDayIndex) {
             firstDay += recurrenceDayIndex - firstWeekday;
         } else {
             firstDay += 7 - (firstWeekday - recurrenceDayIndex);
         }
-
         const firstDate = new Date(nextMonthYear, nextMonthMonth, firstDay, startTime.getHours(), startTime.getMinutes(), 0);
         nextDates.push(firstDate);
 
-        const secondDate = new Date(nextMonthYear, nextMonthMonth, firstDay + 14, startTime.getHours(), startTime.getMinutes(), 0);
-        if (secondDate <= new Date(nextMonthYear, nextMonthMonth + 1, 0)) {
+        // Adiciona a segunda data de agendamento
+        const secondDay = firstDay + 14;
+        const secondDate = new Date(nextMonthYear, nextMonthMonth, secondDay, startTime.getHours(), startTime.getMinutes(), 0);
+        if (secondDate.getMonth() === nextMonthMonth) {
             nextDates.push(secondDate);
         }
     }
 
     return nextDates;
 }
+
+
+
+
+
+
+
 
 
 
