@@ -8,7 +8,13 @@ const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: '*' }));
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  };
+  
+  app.use(cors(corsOptions));
 
 
 const port = process.env.PORT || 9001
