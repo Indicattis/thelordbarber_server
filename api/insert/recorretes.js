@@ -29,8 +29,10 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     let day = 1;
     while (day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate()) {
         const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
-        if ((recurrence_mode === 'semanal' && nextDate.getDay() === recurrenceDayIndex) ||
-            (recurrence_mode === 'quinzenal' && nextDate.getDay() === recurrenceDayIndex && day <= 14)) {
+        if (
+            (recurrence_mode === 'semanal' && nextDate.getDay() === recurrenceDayIndex) ||
+            (recurrence_mode === 'quinzenal' && nextDate.getDay() === recurrenceDayIndex && day <= 14)
+        ) {
             nextDates.push(nextDate);
         }
         day++;
@@ -38,6 +40,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
 
     return nextDates;
 }
+
 
 
 
