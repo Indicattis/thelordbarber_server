@@ -19,7 +19,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const nextMonthYear = nextMonth.getFullYear();
     const nextMonthMonth = nextMonth.getMonth();
 
-    const daysOfWeek = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+    const daysOfWeek = [null, 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']; // Correção nos índices
 
     const recurrenceDayIndex = daysOfWeek.indexOf(recurrence_day);
 
@@ -56,6 +56,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
 
     return nextDates;
 }
+
 
 
 
