@@ -26,29 +26,36 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const nextDates = [];
     const startTime = new Date(`1970-01-01T${recurrence_hour}`);
 
-    let day = 1;
-    while (day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate()) {
-        const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
-        if (
-            (recurrence_mode === 'semanal' && nextDate.getDay() === recurrenceDayIndex) ||
-            (recurrence_mode === 'quinzenal' && nextDate.getDay() === recurrenceDayIndex && day <= 14)
-        ) {
-            nextDates.push(nextDate);
+    if (recurrence_mode === 'semanal') {
+        // Percorre todos os dias do mês seguinte e adiciona o dia de recorrência
+        for (let day = 1; day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate(); day++) {
+            const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
+            if (nextDate.getDay() === recurrenceDayIndex) {
+                nextDates.push(nextDate);
+            }
         }
-        day++;
+    } else if (recurrence_mode === 'quinzenal') {
+        // Encontra a primeira data agendada
+        const firstDayOfMonth = new Date(nextMonthYear, nextMonthMonth, 1);
+        let firstDay = firstDayOfMonth.getDate();
+        const firstWeekday = firstDayOfMonth.getDay();
+        if (firstWeekday <= recurrenceDayIndex) {
+            firstDay += recurrenceDayIndex - firstWeekday;
+        } else {
+            firstDay += 7 - (firstWeekday - recurrenceDayIndex);
+        }
+        const firstDate = new Date(nextMonthYear, nextMonthMonth, firstDay, startTime.getHours(), startTime.getMinutes(), 0);
+
+        // Verifica se a primeira data é menor ou igual ao último dia do mês seguinte
+        while (firstDate <= new Date(nextMonthYear, nextMonthMonth + 1, 0)) {
+            nextDates.push(firstDate);
+            firstDay += 14;
+            firstDate.setDate(firstDay);
+        }
     }
 
     return nextDates;
 }
-
-
-
-
-
-
-
-
-
 
 
 
