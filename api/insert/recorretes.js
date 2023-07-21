@@ -19,7 +19,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const nextMonthYear = nextMonth.getFullYear();
     const nextMonthMonth = nextMonth.getMonth();
 
-    const daysOfWeek = [null, 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']; // Correção nos índices
+    const daysOfWeek = [null, 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
 
     const recurrenceDayIndex = daysOfWeek.indexOf(recurrence_day);
 
@@ -27,22 +27,21 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const startTime = new Date(`1970-01-01T${recurrence_hour}`);
 
     if (recurrence_mode === 'semanal') {
-        // Percorre todos os dias do mês seguinte e adiciona o dia de recorrência
-        for (let day = 1; day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate(); day++) {
-            const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
-            if (nextDate.getDay() === recurrenceDayIndex) {
-                nextDates.push(nextDate);
-            }
+        // Define o primeiro dia de agendamento baseado na diferença entre o dia de recorrência e o dia atual
+        const firstDay = today.getDate() + (recurrenceDayIndex - today.getDay());
+        const firstDate = new Date(today.getFullYear(), today.getMonth(), firstDay, startTime.getHours(), startTime.getMinutes(), 0);
+
+        // Verifica se a primeira data é menor ou igual ao último dia do mês seguinte
+        while (firstDate <= new Date(nextMonthYear, nextMonthMonth + 1, 0)) {
+            nextDates.push(firstDate);
+            firstDate.setDate(firstDate.getDate() + 7);
         }
     } else if (recurrence_mode === 'quinzenal') {
-        // Encontra a primeira data agendada
+        // Define o primeiro dia de agendamento baseado na diferença entre o dia de recorrência e o dia atual
         const firstDayOfMonth = new Date(nextMonthYear, nextMonthMonth, 1);
-        let firstDay = firstDayOfMonth.getDate();
-        const firstWeekday = firstDayOfMonth.getDay();
-        if (firstWeekday <= recurrenceDayIndex) {
-            firstDay += recurrenceDayIndex - firstWeekday;
-        } else {
-            firstDay += 7 - (firstWeekday - recurrenceDayIndex);
+        let firstDay = firstDayOfMonth.getDate() + (recurrenceDayIndex - firstDayOfMonth.getDay());
+        if (firstDay <= 0) {
+            firstDay += 14;
         }
         const firstDate = new Date(nextMonthYear, nextMonthMonth, firstDay, startTime.getHours(), startTime.getMinutes(), 0);
 
@@ -56,6 +55,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
 
     return nextDates;
 }
+
 
 
 
