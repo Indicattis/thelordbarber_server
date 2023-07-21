@@ -88,7 +88,7 @@ router.post('/', (req, res) => {
                 const formattedDate = date.toISOString().split('T')[0];
                 const formattedTime = date.toTimeString().split(' ')[0];
 
-                const checkDuplicateQuery = `SELECT * FROM Agendamentos WHERE day = ? AND hour = ?`;
+                const checkDuplicateQuery = `SELECT * FROM agendamentos WHERE day = ? AND hour = ?`;
                 const checkDuplicateValues = [formattedDate, formattedTime];
 
                 db.query(checkDuplicateQuery, checkDuplicateValues, (duplicateError, duplicateResults) => {
