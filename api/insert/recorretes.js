@@ -98,7 +98,7 @@ router.post('/', (req, res) => {
                     }
 
                     if (duplicateResults.length === 0) {
-                        const agendamentoQuery = `INSERT INTO Agendamentos (cliente, day, hour, product, value, id_barbeiro, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+                        const agendamentoQuery = `INSERT INTO agendamentos (cliente, day, hour, product, value, id_barbeiro, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)`;
                         const agendamentoValues = [
                             phone,
                             formattedDate,
