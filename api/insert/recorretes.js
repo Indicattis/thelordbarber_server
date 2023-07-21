@@ -27,17 +27,19 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const startTime = new Date(`1970-01-01T${recurrence_hour}`);
 
     if (recurrence_mode === 'semanal') {
-        // Define o primeiro dia de agendamento baseado na diferença entre o dia de recorrência e o dia atual
-        const firstDay = today.getDate() + (recurrenceDayIndex - today.getDay());
+        let firstDay = today.getDate() + (recurrenceDayIndex - today.getDay());
+        if (firstDay <= today.getDate()) {
+            firstDay += 7;
+        }
         const firstDate = new Date(today.getFullYear(), today.getMonth(), firstDay, startTime.getHours(), startTime.getMinutes(), 0);
 
         // Verifica se a primeira data é menor ou igual ao último dia do mês seguinte
         while (firstDate <= new Date(nextMonthYear, nextMonthMonth + 1, 0)) {
             nextDates.push(firstDate);
-            firstDate.setDate(firstDate.getDate() + 7);
+            firstDay += 7;
+            firstDate.setDate(firstDay);
         }
     } else if (recurrence_mode === 'quinzenal') {
-        // Define o primeiro dia de agendamento baseado na diferença entre o dia de recorrência e o dia atual
         const firstDayOfMonth = new Date(nextMonthYear, nextMonthMonth, 1);
         let firstDay = firstDayOfMonth.getDate() + (recurrenceDayIndex - firstDayOfMonth.getDay());
         if (firstDay <= 0) {
@@ -55,6 +57,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
 
     return nextDates;
 }
+
 
 
 
