@@ -28,7 +28,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
 
     if (recurrence_mode === 'semanal') {
         for (let i = 0; i < 5; i++) {
-            const day = today.getDate() + (recurrenceDayIndex - today.getDay()) - 3 + i * 7;
+            const day = today.getDate() + (recurrenceDayIndex - today.getDay()) - 2 + i * 7;
             if (day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate()) {
                 const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
                 nextDates.push(nextDate);
