@@ -27,7 +27,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const startTime = new Date(`1970-01-01T${recurrence_hour}`);
 
     if (recurrence_mode === 'semanal') {
-        // Percorre todos os dias do mês seguinte e adiciona as segundas-feiras
+        // Percorre todos os dias do mês seguinte e adiciona o dia de recorrência
         for (let day = 1; day <= new Date(nextMonthYear, nextMonthMonth + 1, 0).getDate(); day++) {
             const nextDate = new Date(nextMonthYear, nextMonthMonth, day, startTime.getHours(), startTime.getMinutes(), 0);
             if (nextDate.getDay() === recurrenceDayIndex) {
@@ -35,7 +35,7 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
             }
         }
     } else if (recurrence_mode === 'quinzenal') {
-        // Adiciona a primeira data de agendamento
+        // Encontra a primeira data agendada
         const firstDayOfMonth = new Date(nextMonthYear, nextMonthMonth, 1);
         let firstDay = firstDayOfMonth.getDate();
         const firstWeekday = firstDayOfMonth.getDay();
@@ -47,16 +47,20 @@ function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
         const firstDate = new Date(nextMonthYear, nextMonthMonth, firstDay, startTime.getHours(), startTime.getMinutes(), 0);
         nextDates.push(firstDate);
 
-        // Adiciona a segunda data de agendamento
-        const secondDay = firstDay + 14;
-        const secondDate = new Date(nextMonthYear, nextMonthMonth, secondDay, startTime.getHours(), startTime.getMinutes(), 0);
-        if (secondDate.getMonth() === nextMonthMonth) {
-            nextDates.push(secondDate);
+        // Encontra a próxima data agendada baseada no dia de recorrência selecionado
+        const nextRecurrenceDay = firstDate.getDay();
+        let nextDay = firstDay + (recurrenceDayIndex >= nextRecurrenceDay ? 14 : 7);
+        const nextDate = new Date(nextMonthYear, nextMonthMonth, nextDay, startTime.getHours(), startTime.getMinutes(), 0);
+        while (nextDate.getMonth() === nextMonthMonth) {
+            nextDates.push(nextDate);
+            nextDay += 14;
+            nextDate.setDate(nextDay);
         }
     }
 
     return nextDates;
 }
+
 
 
 
