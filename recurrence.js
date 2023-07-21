@@ -4,7 +4,7 @@ const cors = require ('cors');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 
 function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
