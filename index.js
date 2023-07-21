@@ -134,3 +134,5 @@ res.send('Rotina de agendamentos acionada com sucesso!');
   
 
 module.exports = app;
+
+module.exports = cors(corsOptions);
