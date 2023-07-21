@@ -103,7 +103,7 @@ router.post('/', (req, res) => {
                         const agendamentoQuery = `INSERT INTO agendamentos (cliente, day, hour, product, value, id_barbeiro, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)`;
                         const agendamentoValues = [
                             phone,
-                            formattedDate,
+                            formattedDate + 1,
                             formattedTime,
                             'Mensalista', 
                             '32.5', 
