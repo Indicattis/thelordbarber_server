@@ -1,6 +1,16 @@
 const express = require ('express');
 const db = require ('../../db.js');
+const cors = require ('cors');
 
+const app = express();
+app.use(express.json());
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 
 function calcularProximaData(recurrence_day, recurrence_hour) {

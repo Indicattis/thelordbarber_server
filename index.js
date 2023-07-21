@@ -12,9 +12,9 @@ const corsOptions = {
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
-  };
-  
-  app.use(cors(corsOptions));
+};
+
+app.use(cors(corsOptions));
 
 
 const port = process.env.PORT || 9001
