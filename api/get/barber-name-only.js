@@ -13,10 +13,10 @@ router.get('/:id', (req, res) => {
           res.status(500).json({ error: 'Erro ao verificar nome do barbeiro.' });
         } else {
           if (results.length > 0) {
-            const barberName = results[0].name;
-            res.status(200).json({ name: barberName });
+            const barberName = results[0].nome;
+            res.status(200).json({ nome: barberName });
           } else {
-            res.status(200).json({ name: '' });
+            res.status(200).json({ nome: '' });
           }
         }
       });
