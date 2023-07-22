@@ -10,7 +10,7 @@ router.get('/:month', (req, res) => {
   SELECT DAY(day) AS dia, SUM(value) AS total
 FROM agendamentos
 WHERE MONTH(day) = ?
-GROUP BY DAY(day)
+GROUP BY DAY(day), day
 ORDER BY day ASC
 `;
 
