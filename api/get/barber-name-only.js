@@ -6,15 +6,15 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const id = req.params.id;
-    const sql = `SELECT name FROM barbeiros WHERE id = ?`;
+    const sql = `SELECT nome FROM barbeiros WHERE id = ?`;
     
     db.query(sql, [id], (error, results) => {
         if (error) {
           res.status(500).json({ error: 'Erro ao verificar nome do barbeiro.' });
         } else {
           if (results.length > 0) {
-            const clientName = results[0].name;
-            res.status(200).json({ name: clientName });
+            const barberName = results[0].name;
+            res.status(200).json({ name: barberName });
           } else {
             res.status(200).json({ name: '' });
           }
