@@ -5,13 +5,7 @@ const cors = require ('cors');
 const app = express();
 
 app.use(express.json());
-const corsOptions = {
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 function calcularProximaData(recurrence_day, recurrence_hour, recurrence_mode) {
     const today = new Date();
