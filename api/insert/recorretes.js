@@ -100,7 +100,7 @@ router.post('/', (req, res) => {
                             formattedDate,
                             formattedTime,
                             'Mensalista', 
-                            '32.5', 
+                            '0', 
                             '1', // Adicione aqui o ID do barbeiro
                             id
                         ];
