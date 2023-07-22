@@ -1,15 +1,11 @@
 const express = require('express');
 const db = require('../../db.js');
 const jwt = require('jsonwebtoken');
-const configureCors = require('../../cors.js');
-
+const cors = require('cors');
 const app = express();
 
-// Aplicar o middleware do CORS antes de definir outras rotas
-app.use(configureCors);
-
-// Aplicar o middleware express.json() para tratar o corpo das requisições
 app.use(express.json());
+app.use(cors());
 
 const router = express.Router();
 
