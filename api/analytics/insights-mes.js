@@ -8,9 +8,10 @@ router.get('/:month', (req, res) => {
 
   const sqlQuery = `
   SELECT DAY(day) AS dia, SUM(value) AS total
-  FROM agendamentos
-  WHERE MONTH(day) = ?
-  GROUP BY DAY(day)
+FROM agendamentos
+WHERE MONTH(day) = ?
+GROUP BY DAY(day)
+ORDER BY day ASC
 `;
 
 
