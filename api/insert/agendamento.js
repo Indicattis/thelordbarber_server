@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         db.query(sqlInsert, [cliente, day, hour, product, value, barber, userId], (err, result) => {
             if (err) {
                 db.rollback(() => {
-                    return res.json({ Message: "Error inside server 1" });
+                    return res.json({ Message: "Error inside server 1" [cliente, day, hour, product, value, barber, userId] });
                 });
             }
 
