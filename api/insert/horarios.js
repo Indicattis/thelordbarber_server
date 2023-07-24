@@ -44,13 +44,13 @@ router.post('/', (req, res) => {
   
               db.query(sqlInsertQuery, (error) => {
                 if (error) {
-                  console.error(`Erro ao inserir os horários para o dia ${dataLoop.toISOString().split('T')[0]} e barbeiro ${idBarbeiro}:`, error);
+                  return res.status(500).json(`Erro ao inserir os horários para o dia ${dataLoop.toISOString().split('T')[0]} e barbeiro ${idBarbeiro}:`, error);
                 } else {
-                  console.log(`Horários inseridos para o dia ${dataLoop.toISOString().split('T')[0]} e barbeiro ${idBarbeiro}`);
+                  return res.status(200).json(`Horários inseridos para o dia ${dataLoop.toISOString().split('T')[0]} e barbeiro ${idBarbeiro}`);
                 }
               });
             } else {
-              console.log(`Horários já existentes para o dia ${dataLoop.toISOString().split('T')[0]} e barbeiro ${idBarbeiro}. Nenhuma inserção será feita.`);
+              return res.status(200).json(`Horários já existentes para o dia ${dataLoop.toISOString().split('T')[0]} e barbeiro ${idBarbeiro}. Nenhuma inserção será feita.`);
             }
           }
         });

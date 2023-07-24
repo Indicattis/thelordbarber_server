@@ -28,24 +28,25 @@ router.post('/', (req, res) => {
                     return res.json({ Message: "Error inside server 1" [cliente, day, hour, product, value, barber, userId] });
                 });
             }
-
-            db.query(sqlUpdate, [day, hour, barber], (err, result) => {
-                if (err) {
-                    db.rollback(() => {
-                        return res.json({ Message: "Error inside server 2" });
-                    });
-                }
-
-                db.commit(err => {
+            else {
+                db.query(sqlUpdate, [day, hour, barber], (err, result) => {
                     if (err) {
                         db.rollback(() => {
-                            return res.json({ Message: "Error inside server 3" });
+                            return res.json({ Message: "Error inside server 2" });
                         });
                     }
-
-                    return res.json(result);
+    
+                    db.commit(err => {
+                        if (err) {
+                            db.rollback(() => {
+                                return res.json({ Message: "Error inside server 3" });
+                            });
+                        }
+    
+                        return res.json(result);
+                    });
                 });
-            });
+            }
         });
     });
 });
