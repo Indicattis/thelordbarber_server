@@ -119,6 +119,9 @@ app.use('/post-delete-barbeiro', deleteBarbeiro);
 const insertHorario = require ('./api/insert/horarios.js');
 app.use('/insert-horarios-barbeiro', insertHorario)
 
+const insertHorarioMes = require ('./api/insert/horarios-mes.js');
+app.use('/insert-horarios-barbeiro-mes', insertHorarioMes)
+
 const insertAgendamentosRecorrentesCliete = require ('./api/insert/recorretes.js')
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 
