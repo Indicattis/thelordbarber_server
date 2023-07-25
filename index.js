@@ -20,7 +20,8 @@ app.get('/', (req, res) =>{
 
 // const port = 8800;
 
-
+const authClient = require('./api/auth/2fa.js')
+app.use('/send-2fa',authClient)
 
 // cron.schedule('0 0 15 * *', () => {
 //     db.query('SELECT id FROM barbeiros', (error, results) => {
