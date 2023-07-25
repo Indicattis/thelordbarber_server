@@ -62,6 +62,9 @@ app.use('/agendamentos-dia', agendamentosDia);
 const getClientDetails = require ('./api/get/cliente.js');
 app.use('/clientes-id', getClientDetails);
 
+const getBarberDetails = require ('./api/get/barber.js');
+app.use('/barber-id', getBarberDetails);
+
 const getClientName = require ('./api/get/cliente-name.js');
 app.use('/cliente-name', getClientName);
 
