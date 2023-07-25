@@ -122,7 +122,8 @@ app.use('/insert-horarios-barbeiro', insertHorario)
 const insertAgendamentosRecorrentesCliete = require ('./api/insert/recorretes.js')
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 
-
+const getHorariosStatus = require('./api/analytics/horarios-status.js'); // Importe a rota que você criou
+app.use('/horarios-status', getHorariosStatus);
 
 app.post('/rotina-recorrentes', (req, res) => {
 inserirAgendamentosAutomaticos();
