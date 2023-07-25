@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     const currentMonth = currentDate.getMonth() + 1; // Mês atual começa em 0, por isso somamos 1
     const currentYear = currentDate.getFullYear();
   
-    const sqlQuery = `SELECT COUNT(*) AS quantidadeLinhas FROM horarios WHERE id = ? AND MONTH(day) = ? AND YEAR(day) = ?`;
+    const sqlQuery = `SELECT COUNT(*) AS quantidadeLinhas FROM horarios WHERE id_barbeiro = ? AND MONTH(day) = ? AND YEAR(day) = ?`;
     const values = [id, currentMonth, currentYear];
   
     db.query(sqlQuery, values, (err, results) => {
