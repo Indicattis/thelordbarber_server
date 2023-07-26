@@ -12,7 +12,7 @@ const router = express.Router();
 router.post('/', (req, res) => {
     const { phone, username, password } = req.body;
     
-    const insertQuery = `INSERT INTO clientes (phone, name) VALUES ('${phone}', '${username}', '${password}')`;
+    const insertQuery = `INSERT INTO clientes (phone, name, senha) VALUES ('${phone}', '${username}', '${password}')`;
     db.query(insertQuery, (error) => {
         if (error) {
         res.status(500).json({ error: 'Erro ao cadastrar usuário.' });
