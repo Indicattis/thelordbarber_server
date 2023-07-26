@@ -90,6 +90,9 @@ app.use('/insights-mes', insightsMonth);
 const adminLogin = require ('./api/auth/admin-login.js');
 app.use('/admin-login', adminLogin);
 
+const clientLogin = require ('./api/auth/client-login.js');
+app.use('/client-login', clientLogin);
+
 const adminSetAll = require ('./api/modify/admin-all.js');
 app.use('/admin-set-all', adminSetAll);
 
