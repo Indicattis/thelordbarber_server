@@ -15,7 +15,7 @@ router.get('/:barberId/:day', (req, res) => {
   
     const sqlQuery = `
       SELECT * FROM horarios
-      WHERE id_barbeiro = ? AND day = ? AND status = 1 ORDER BY hour ASC
+      WHERE id_barbeiro = ? AND day = ? ORDER BY hour ASC
     `;
   
     db.query(sqlQuery, [barberId, day], (error, result) => {
