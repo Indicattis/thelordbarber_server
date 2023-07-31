@@ -116,7 +116,8 @@ router.post('/', (req, res) => {
                             }
                         });
 
-                        db.query(sqlUpdate, [agendamentoValues.formattedDate, agendamentoValues.formattedTime, '1'], (err, result) => {
+                        db.query(sqlUpdate, [formattedDate, formattedTime, '1'], (err, result) => {
+
                             if (err) {
                                 db.rollback(() => {
                                     return res.json({ Message: "Error inside server 2" });
