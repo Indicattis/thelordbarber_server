@@ -135,6 +135,9 @@ app.use('/insert-horarios-barbeiro', insertHorario)
 const insertHorarioMes = require ('./api/insert/horarios-mes.js');
 app.use('/insert-horarios-barbeiro-mes', insertHorarioMes)
 
+const changeStatusHorario = require ('./api/modify/horario-status.js');
+app.use('/horario-status', changeStatusHorario)
+
 const insertAgendamentosRecorrentesCliete = require ('./api/insert/recorretes.js')
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 
