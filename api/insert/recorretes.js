@@ -60,6 +60,9 @@ const router = express.Router();
 router.post('/', (req, res) => {
     const id_client = req.body.cliente;
     const query = `SELECT * FROM clientes WHERE recurrence = 1 AND id = ${id_client}`;
+    const sqlUpdate = `UPDATE horarios
+                       SET status = 0
+                       WHERE day = ? AND hour = ? AND id_barbeiro = ?`;
 
     db.query(query, (error, results) => {
         if (error) {
@@ -111,6 +114,24 @@ router.post('/', (req, res) => {
                             } else {
                                 console.log('Agendamento criado:', agendamentoValues);
                             }
+                        });
+
+                        db.query(sqlUpdate, [agendamentoValues.formattedDate, agendamentoValues.formattedTime, '1'], (err, result) => {
+                            if (err) {
+                                db.rollback(() => {
+                                    return res.json({ Message: "Error inside server 2" });
+                                });
+                            }
+            
+                            db.commit(err => {
+                                if (err) {
+                                    db.rollback(() => {
+                                        return res.json({ Message: "Error inside server 3" });
+                                    });
+                                }
+            
+                                return res.json(result);
+                            });
                         });
                     }
                 });
