@@ -57,6 +57,9 @@ app.use('/agendamentos-cliente', agendamentosCliente);
 const agendamentosMes = require ('./api/data/agendamentos-mes.js');
 app.use('/agendamentos-mes', agendamentosMes);
 
+const horariosMes = require ('./api/data/horarios-mes.js');
+app.use('/horarios-barbeiro-mes', horariosMes);
+
 const agendamentosDia = require ('./api/data/agendamentos-dia.js');
 app.use('/agendamentos-dia', agendamentosDia);
 

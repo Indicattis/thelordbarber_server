@@ -1,0 +1,29 @@
+const express = require ('express');
+const db = require ('../../db.js');
+const cors = require ('cors');
+
+const app = express();
+
+app.use(cors());
+
+const router = express.Router();
+
+router.get('/:month', (req, res) => {
+  const { month } = req.params;
+  
+  const sqlQuery = `
+    SELECT * FROM horarios
+    WHERE MONTH(day) = ?
+  `;
+  
+  db.query(sqlQuery, [month], (error, result) => {
+    if (error) {
+      console.error("Erro ao consultar o banco de dados:", error);
+      return res.status(500).json({ error: "Erro interno do servidor" });
+    }
+  
+    res.json(result);
+  });
+});
+
+module.exports = router;
