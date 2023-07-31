@@ -8,15 +8,15 @@ app.use(cors());
 
 const router = express.Router();
 
-router.get('/:month', (req, res) => {
-  const { month } = req.params;
+router.get('/:month/:id_barbeiro', (req, res) => {
+  const { month, id_barbeiro } = req.params;
   
   const sqlQuery = `
     SELECT * FROM horarios
-    WHERE MONTH(day) = ?
+    WHERE MONTH(day) = ? AND id_barbeiro = ?
   `;
   
-  db.query(sqlQuery, [month], (error, result) => {
+  db.query(sqlQuery, [month, id_barbeiro], (error, result) => {
     if (error) {
       console.error("Erro ao consultar o banco de dados:", error);
       return res.status(500).json({ error: "Erro interno do servidor" });
