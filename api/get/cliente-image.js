@@ -9,7 +9,7 @@ app.use(cors());
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    const { id } = req.body;
+    const { id } = req.body.params.id;
   
     const checkQuery = `SELECT image FROM clientes WHERE id = ?`;
     db.query(checkQuery, [id], (error, results) => {
