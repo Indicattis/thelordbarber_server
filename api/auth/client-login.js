@@ -12,16 +12,16 @@ const router = express.Router();
 router.post('/', (req, res) => {
     const { phone, password } = req.body;
 
-    const query = `SELECT id, name, phone FROM clientes WHERE phone = ? AND senha = ?`;
+    const query = `SELECT id, name, phone, image FROM clientes WHERE phone = ? AND senha = ?`;
     db.query(query, [phone, password], (error, results) => {
         if (error) {
             console.error("Erro ao consultar o banco de dados:", error);
             res.status(500).json({ error: "Erro interno do servidor" });
         } else {
             if (results.length > 0) {
-                const { id, name, phone } = results[0];
-                const token = jwt.sign({ id, name, phone }, "secret_key");
-                res.json({ authenticated: true, token, id, phone, name });
+                const { id, name, phone, image } = results[0];
+                const token = jwt.sign({ id, name, phone, image }, "secret_key");
+                res.json({ authenticated: true, token, id, phone, name, image });
             } else {
                 res.json({ authenticated: false });
             }
