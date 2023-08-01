@@ -84,6 +84,9 @@ app.use('/barber-name-only', getBarberNameOnly);
 const getClientPhone = require ('./api/get/cliente-number.js');
 app.use('/cliente-phone', getClientPhone);
 
+const getClientImage = require ('./api/get/cliente-image.js');
+app.use('/cliente-image', getClientImage);
+
 const getAgendamento = require ('./api/get/agendamento.js');
 app.use('/agendamento-id', getAgendamento);
 
