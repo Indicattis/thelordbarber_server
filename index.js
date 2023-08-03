@@ -5,9 +5,7 @@ const cors = require('cors');
 // import db from './db.js';
 // import { inserirHorarios } from './rotina.js';
 const inserirAgendamentosAutomaticos = require ('./recurrence.js');
-// const initBot = require('./bot/wppconnect.js')
-// const getQRCode = require ('./bot/wppconnect.js')
-// app.use('/qrcode', getQRCode)
+const initBot = require('./bot/wppconnect.js')
 
 const app = express();
 app.use(express.json());
@@ -16,6 +14,8 @@ app.use(cors());
 
 const port = process.env.PORT || 9001
 
+const getQRCode = require ('./bot/wppconnect.js')
+app.use('/qrcode', getQRCode)
 
 app.get('/', (req, res) =>{
     return res.json('hello');
