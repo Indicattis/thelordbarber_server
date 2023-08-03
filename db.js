@@ -28,7 +28,7 @@ const db = mysql.createConnection({
         console.error('Erro na conexão com o banco de dados:', error);
         return;
     }
-    console.log('Conexão bem-sucedida!');
+    console.log('Conectado ao banco de dados!');
 });
 
 module.exports = db;
