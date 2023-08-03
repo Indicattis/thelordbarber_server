@@ -152,6 +152,5 @@ inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
   
-app.listen(port)
 
 module.exports = app;
