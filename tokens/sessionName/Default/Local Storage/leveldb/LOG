@@ -1,5 +1,0 @@
-2023/08/03-14:44:47.751 6330 Creating DB D:\Repositories\thelordbarber_server\tokens\sessionName\Default\Local Storage\leveldb since it was missing.
-2023/08/03-14:44:47.757 6330 Reusing MANIFEST D:\Repositories\thelordbarber_server\tokens\sessionName\Default\Local Storage\leveldb/MANIFEST-000001
-2023/08/03-14:44:47.757 6330 Recovering log #4
-2023/08/03-14:44:47.757 6330 Reusing old log D:\Repositories\thelordbarber_server\tokens\sessionName\Default\Local Storage\leveldb/000004.log 
-2023/08/03-14:44:47.757 6330 Delete type=2 #5
