@@ -5,7 +5,7 @@ const cors = require('cors');
 // import db from './db.js';
 // import { inserirHorarios } from './rotina.js';
 const inserirAgendamentosAutomaticos = require ('./recurrence.js');
-const initBot = require('./bot/wppconnect.js')
+// const initBot = require('./bot/wppconnect.js')
 
 const app = express();
 app.use(express.json());
@@ -14,17 +14,14 @@ app.use(cors());
 
 const port = process.env.PORT || 9001
 
-const getQRCode = require ('./bot/wppconnect.js')
-app.use('/qrcode', getQRCode)
+// const getQRCode = require ('./bot/wppconnect.js')
+// app.use('/qrcode', getQRCode)
+// initBot()
 
 app.get('/', (req, res) =>{
-    return res.json('hello');
+    return res.json(`THELORDBARBER_SERVER is on port:${port}`);
 });
 
-// const port = 8800;
-
-const authClient = require('./api/auth/2fa.js')
-app.use('/send-2fa',authClient)
 
 // cron.schedule('0 0 15 * *', () => {
 //     db.query('SELECT id FROM barbeiros', (error, results) => {
@@ -155,6 +152,5 @@ inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
   
-// initBot()
 
 module.exports = app;
