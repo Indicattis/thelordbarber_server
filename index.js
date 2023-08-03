@@ -5,7 +5,7 @@ const cors = require('cors');
 // import db from './db.js';
 // import { inserirHorarios } from './rotina.js';
 const inserirAgendamentosAutomaticos = require ('./recurrence.js');
-const initBot = require('./bot/wppconnect.js')
+// const initBot = require('./bot/wppconnect.js')
 
 const app = express();
 app.use(express.json());
