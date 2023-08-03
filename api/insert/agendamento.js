@@ -1,6 +1,7 @@
 const express = require ('express');
 const db = require ('../../db.js');
 const cors = require ('cors');
+const bot = require('../../bot/wppconnect.js');
 
 const app = express();
 
@@ -42,7 +43,10 @@ router.post('/', (req, res) => {
                                 return res.json({ Message: "Error inside server 3" });
                             });
                         }
-    
+                        bot.feedbackMessage({
+                            from: cliente, // Use the appropriate phone number of the client here
+                            message: 'agendamento_concluido',
+                        });
                         return res.json(result);
                     });
                 });
