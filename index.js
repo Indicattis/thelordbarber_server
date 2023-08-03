@@ -153,6 +153,6 @@ inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
   
-initBot()
+// initBot()
 
 module.exports = app;
