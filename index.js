@@ -6,8 +6,8 @@ const cors = require('cors');
 // import { inserirHorarios } from './rotina.js';
 const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 // const initBot = require('./bot/wppconnect.js')
-const getQRCode = require ('./bot/wppconnect.js')
-app.use('/qrcode', getQRCode)
+// const getQRCode = require ('./bot/wppconnect.js')
+// app.use('/qrcode', getQRCode)
 
 const app = express();
 app.use(express.json());
