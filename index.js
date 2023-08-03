@@ -46,7 +46,7 @@ const horariosRouter = require ('./api/horarios.js');
 app.use('/horarios', horariosRouter);
 
 const barbeirosRouter = require ('./api/barbeiros.js');
-app.use('/barbeiros', barbeirosRouter);
+app.use('/barbeiros', barbeirosRouter); 
 
 const clientesRouter = require ('./api/clientes.js');
 app.use('/clientes', clientesRouter);
