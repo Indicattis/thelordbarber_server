@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 
-const port = process.env.PORT || 9001
+// const port = process.env.PORT || 9001
 
 // const getQRCode = require ('./bot/wppconnect.js')
 // app.use('/qrcode', getQRCode)
@@ -152,5 +152,6 @@ inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
   
+app.listen(9001)
 
 module.exports = app;
