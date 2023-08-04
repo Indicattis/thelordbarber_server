@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors("*"));
 
 
-const port = 3000
+const port = 9001
 
 // const getQRCode = require ('./bot/wppconnect.js')
 // app.use('/qrcode', getQRCode)
