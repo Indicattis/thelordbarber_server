@@ -152,6 +152,8 @@ inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
   
-app.listen(port)
+app.listen(port, () => {
+    console.log("Server is running on port "+ port)
+})
 
 module.exports = app;
