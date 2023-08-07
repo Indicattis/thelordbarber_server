@@ -17,8 +17,7 @@ const port = 9001
 app.get('/', (req, res) =>{
     return res.json(`THELORDBARBER_SERVER is on port:${port}`);
 });
-
-
+ 
 // cron.schedule('0 0 15 * *', () => {
 //     db.query('SELECT id FROM barbeiros', (error, results) => {
 //         if (error) {
