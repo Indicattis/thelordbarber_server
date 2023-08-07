@@ -21,10 +21,6 @@ router.put('/', (req, res) => {
       WHERE id = ?
     `;
   
-    if (!barberId || !password) {
-      return res.status(400).json({ message: 'Parâmetros inválidos' });
-    }
-  
     db.query(sqlQuery, [name, id], (err, results) => {
       if (err) {
         console.error('Erro ao atualizar a senha:', err);
