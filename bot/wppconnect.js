@@ -34,61 +34,71 @@ function initBot() {
         },
         logQR: false,
       })
-  .then((client) => start(client))
-  .catch((error) => console.log(error));
+    .then((client) => start(client))
+    .catch((error) => console.log(error));
 
     function start(client) {
-  client.onMessage((message) => {
-    if (message.body === 'Olá') {
-      client
-        .sendText(message.from, 'Bem vindo ao assistente virtual The Lord! Como posso lhe ajudar? \n\n 1 - Agendamento \n 2 - Cortes e Serviços ✂️ \n 3 - Suporte ao Usuário 👤')
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        });
-    }
-    if (message.body === '1') {
-        client
-          .sendText(message.from, 'Você pode realizar seu agendamento de qualquer lugar acessando: \n\n https://the-lord-barber-git-master-indicattis.vercel.app/agendamento \n\n Basta acessar o link e verificar os horários disponíveis! \n The Lord Barber agradece seu contato!')
-          .then((result) => {
-            console.log('Result: ', result); //return object success
-          })
-          .catch((erro) => {
-            console.error('Error when sending: ', erro); //return object error
-          });
-      }
-    if (message.body == 'caramba') {
-        client
-          .sendText(message.from, 'que pinto enorme')
-          .then((result) => {
-            console.log('Result: ', result); //return object success
-          })
-          .catch((erro) => {
-            console.error('Error when sending: ', erro); //return object error
-          });
-      }
-      if (message.body == 'Stefani') {
-        client
-          .sendText(message.from, 'Você acabou de falar o nome do amor da vida do João')
-          .then((result) => {
-            console.log('Result: ', result); //return object success
-          })
-          .catch((erro) => {
-            console.error('Error when sending: ', erro); //return object error
-          });
-      }
-  });
+      client.onMessage((message) => {
+        if (message.body === 'Olá') {
+          client
+            .sendText(message.from, 'Bem vindo ao assistente virtual The Lord! Como posso lhe ajudar? \n\n 1 - Agendamento \n 2 - Cortes e Serviços ✂️ \n 3 - Suporte ao Usuário 👤')
+            .then((result) => {
+              console.log('Result: ', result); //return object success
+            })
+            .catch((erro) => {
+              console.error('Error when sending: ', erro); //return object error
+            });
+        }
+        if (message.body === '1') {
+            client
+              .sendText(message.from, 'Você pode realizar seu agendamento de qualquer lugar acessando: \n\n https://the-lord-barber-git-master-indicattis.vercel.app/agendamento \n\n Basta acessar o link e verificar os horários disponíveis! \n The Lord Barber agradece seu contato!')
+              .then((result) => {
+                console.log('Result: ', result); //return object success
+              })
+              .catch((erro) => {
+                console.error('Error when sending: ', erro); //return object error
+              });
+          }
+      });
 }
 }
 
-router.get('/', (req, res) => {
-    initBot((qrCodeData) => {
-      res.json(qrCodeData);
-    });
-  });
 
-initBot()
 
-module.exports = router;
+function enviarMensagem(numero, mensagem) {
+  wppconnect
+      .create({
+          session: 'sessionName',
+          logQR: false,
+      })
+      .then((client) => {
+          return client
+              .isLogged()
+              .then((isLogged) => {
+                  if (isLogged) {
+                      return client.sendText(numero, mensagem);
+                  } else {
+                      throw new Error('Cliente não está logado');
+                  }
+              })
+              .catch((error) => {
+                  console.error('Erro ao verificar status de login:', error);
+                  throw error;
+              })
+              .finally(() => {
+                  client.destroy();
+              });
+      })
+      .catch((error) => {
+          console.error('Erro ao criar cliente:', error);
+          throw error;
+      });
+}
+
+module.exports = {
+  enviarMensagem,
+};
+
+
+
+// initBot()

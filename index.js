@@ -14,10 +14,6 @@ app.use(cors("*"));
 
 const port = 9001
 
-// const getQRCode = require ('./bot/wppconnect.js')
-// app.use('/qrcode', getQRCode)
-// initBot()
-
 app.get('/', (req, res) =>{
     return res.json(`THELORDBARBER_SERVER is on port:${port}`);
 });
@@ -151,6 +147,13 @@ app.post('/rotina-recorrentes', (req, res) => {
 inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
+
+
+const AlterClientName = require('./api/modify/alter-client-name.js')
+app.use('/alter-client-name', AlterClientName)
+
+const AlterClientPass = require('./api/modify/alter-client-password.js')
+app.use('/alter-client-password', AlterClientPass)
   
 app.listen(port, () => {
     console.log("Server is running on port "+ port)
