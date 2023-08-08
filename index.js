@@ -1,10 +1,11 @@
 // index.js
 const express = require('express');
 const cors = require('cors');
-const cron = require('node-cron');
-const db = require ('./db.js');
+// const cron = require('node-cron');
+// const db = require ('./db.js');
 const { inserirHorarios } = require('./rotina.js');
 const initBot = require('./bot/wppconnect.js')
+const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 
 const app = express();
 app.use(express.json());
@@ -18,18 +19,18 @@ app.get('/', (req, res) =>{
 
 
  
-cron.schedule('0 0 15 * *', () => {
-    db.query('SELECT id FROM barbeiros', (error, results) => {
-        if (error) {
-            console.error('Erro ao obter os IDs dos barbeiros:', error);
-            return;
-        }
+// cron.schedule('0 0 15 * *', () => {
+//     db.query('SELECT id FROM barbeiros', (error, results) => {
+//         if (error) {
+//             console.error('Erro ao obter os IDs dos barbeiros:', error);
+//             return;
+//         }
         
-        const idBarbeiros = results.map((row) => row.id);
-        inserirHorarios(idBarbeiros);
-        executarRotinaAgendamentos()
-    });
-});
+//         const idBarbeiros = results.map((row) => row.id);
+//         inserirHorarios(idBarbeiros);
+//         executarRotinaAgendamentos()
+//     });
+// });
 
 
 
@@ -142,7 +143,6 @@ app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 const getHorariosStatus = require('./api/analytics/horarios-status.js'); // Importe a rota que você criou
 app.use('/horarios-status', getHorariosStatus);
 
-const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 app.post('/rotina-recorrentes', (req, res) => {
 inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
