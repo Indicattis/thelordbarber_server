@@ -1,38 +1,38 @@
 // index.js
 const express = require('express');
 const cors = require('cors');
-// import cron from 'node-cron';
-// import db from './db.js';
-// import { inserirHorarios } from './rotina.js';
-const inserirAgendamentosAutomaticos = require ('./recurrence.js');
-// const initBot = require('./bot/wppconnect.js')
+const cron = require('node-cron');
+const db = require ('./db.js');
+const { inserirHorarios } = require('./rotina.js');
+const initBot = require('./bot/wppconnect.js')
 
 const app = express();
 app.use(express.json());
-app.use(cors("*"));
-
+app.use(cors());
 
 const port = 9001
 
 app.get('/', (req, res) =>{
     return res.json(`THELORDBARBER_SERVER is on port:${port}`);
 });
- 
-// cron.schedule('0 0 15 * *', () => {
-//     db.query('SELECT id FROM barbeiros', (error, results) => {
-//         if (error) {
-//             console.error('Erro ao obter os IDs dos barbeiros:', error);
-//             return;
-//         }
-        
-//         const idBarbeiros = results.map((row) => row.id);
-//         inserirHorarios(idBarbeiros);
-//     });
-// });
 
-// cron.schedule('0 0 15 * *', () => {
-//     executarRotinaAgendamentos()
-// })
+
+ 
+cron.schedule('0 0 15 * *', () => {
+    db.query('SELECT id FROM barbeiros', (error, results) => {
+        if (error) {
+            console.error('Erro ao obter os IDs dos barbeiros:', error);
+            return;
+        }
+        
+        const idBarbeiros = results.map((row) => row.id);
+        inserirHorarios(idBarbeiros);
+        executarRotinaAgendamentos()
+    });
+});
+
+
+
 // Roteamento
 const horariosRouter = require ('./api/horarios.js');
 app.use('/horarios', horariosRouter);
@@ -142,6 +142,7 @@ app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 const getHorariosStatus = require('./api/analytics/horarios-status.js'); // Importe a rota que você criou
 app.use('/horarios-status', getHorariosStatus);
 
+const inserirAgendamentosAutomaticos = require ('./recurrence.js');
 app.post('/rotina-recorrentes', (req, res) => {
 inserirAgendamentosAutomaticos();
 res.send('Rotina de agendamentos acionada com sucesso!');
