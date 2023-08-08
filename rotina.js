@@ -2,7 +2,7 @@ const db = require('./db.js');
 
 
   
-  export function inserirHorarios(idBarbeiros) {
+function inserirHorarios(idBarbeiros) {
     const mesAtual = new Date().getMonth() + 1;
     const anoAtual = new Date().getFullYear();
   
@@ -91,3 +91,5 @@ const db = require('./db.js');
       }
     }
   }
+
+  module.exports = inserirHorarios;
