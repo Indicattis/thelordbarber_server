@@ -43,6 +43,7 @@ router.post('/', (req, res) => {
                                 return res.json({ Message: "Error inside server 3" });
                             });
                         }
+                        return res.json(result);
                     });
                 });
             }
