@@ -43,8 +43,6 @@ router.post('/', (req, res) => {
                                 return res.json({ Message: "Error inside server 3" });
                             });
                         }
-                        enviarMensagem(cliente, 'Seu agendamento foi realizado com sucesso!');
-                        return res.json(result);
                     });
                 });
             }

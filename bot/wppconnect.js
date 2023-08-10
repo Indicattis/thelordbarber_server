@@ -63,42 +63,4 @@ function initBot() {
 }
 }
 
-
-
-function enviarMensagem(numero, mensagem) {
-  wppconnect
-      .create({
-          session: 'sessionName',
-          logQR: false,
-      })
-      .then((client) => {
-          return client
-              .isLogged()
-              .then((isLogged) => {
-                  if (isLogged) {
-                      return client.sendText(numero, mensagem);
-                  } else {
-                      throw new Error('Cliente não está logado');
-                  }
-              })
-              .catch((error) => {
-                  console.error('Erro ao verificar status de login:', error);
-                  throw error;
-              })
-              .finally(() => {
-                  client.destroy();
-              });
-      })
-      .catch((error) => {
-          console.error('Erro ao criar cliente:', error);
-          throw error;
-      });
-}
-
-module.exports = {
-  enviarMensagem,
-};
-
-
-
 // initBot()
