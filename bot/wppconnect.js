@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
   }
 
   try {
-    let qrCodeData = null;
     const client = await wppconnect.create({
       session: 'sessionName',
       catchQR: (base64Qr, asciiQR) => {
@@ -29,23 +28,19 @@ router.get('/', async (req, res) => {
           return res.status(500).json({ error: 'Invalid input string' });
         }
 
-        qrCodeData = matches[2];
-        fs.writeFileSync(SESSION_FILE_PATH, qrCodeData, 'base64');
+        fs.writeFileSync(SESSION_FILE_PATH, matches[2], 'base64');
       },
       logQR: false,
     });
 
     start(client);
 
-    if (qrCodeData) {
-      return res.status(200).json({ qrCodePath: SESSION_FILE_PATH });
-    } else {
-      return res.status(500).json({ error: 'No QR code data available' });
-    }
+    return res.status(200).json({ qrCodePath: SESSION_FILE_PATH });
   } catch (error) {
     res.status(500).json({ error: 'Error initializing bot' });
   }
 });
+
 
 
 
