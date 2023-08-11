@@ -10,7 +10,7 @@ app.use(cors());
 
 const router = express.Router();
 
-router.get('/init-bot', (req, res) => {
+router.get('/', (req, res) => {
     wppconnect
       .create({
         session: 'sessionName',
@@ -61,6 +61,5 @@ router.get('/init-bot', (req, res) => {
 }
 }
 )
-// initBot()
 
 module.exports = router

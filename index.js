@@ -83,6 +83,13 @@ const getHorariosStatus = require('./api/analytics/horarios-status.js'); // Impo
 const insightsBarber = require ('./api/analytics/insights-barber.js');
 const insightsMonth = require ('./api/analytics/insights-mes.js');
 
+// # BOT
+const StartBot = require('./bot/wppconnect.js')
+
+
+
+app.use('/init-bot', StartBot)
+
 app.use('/horarios', horariosRouter);
 
 app.use('/barbeiros', barbeirosRouter); 
