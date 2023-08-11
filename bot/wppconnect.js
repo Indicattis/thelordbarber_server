@@ -35,13 +35,15 @@ router.get('/', async (req, res) => {
 
     start(client);
 
-    return res.status(200).json({ qrCodePath: SESSION_FILE_PATH });
+    if (fs.existsSync(SESSION_FILE_PATH)) {
+      return res.status(200).json({ qrCodePath: SESSION_FILE_PATH });
+    } else {
+      return res.status(500).json({ error: 'No QR code data available' });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Error initializing bot' });
   }
 });
-
-
 
 
 function start(client) {
