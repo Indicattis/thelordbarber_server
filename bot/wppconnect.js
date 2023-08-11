@@ -3,6 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 const wppconnect = require('@wppconnect-team/wppconnect');
+const cors = require ('cors');
 
 const SESSION_FILE_PATH = 'out.png';
 
