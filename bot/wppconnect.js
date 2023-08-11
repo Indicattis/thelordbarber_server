@@ -14,37 +14,40 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   if (fs.existsSync(SESSION_FILE_PATH)) {
-    const qrCodeData = fs.readFileSync(SESSION_FILE_PATH, 'base64');
-    return res.status(200).json({ type: 'image/png', data: qrCodeData });
+    const qrCodeData = fs.readFileSync(SESSION_FILE_PATH);
+    return res.status(200).json({ type: 'image/png', data: qrCodeData.toString('base64') });
   }
 
   try {
+    let qrCodeData = null;
     const client = await wppconnect.create({
       session: 'sessionName',
       catchQR: (base64Qr, asciiQR) => {
         console.log(asciiQR);
-        var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
-          response = {};
+        var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
         if (matches.length !== 3) {
           return res.status(500).json({ error: 'Invalid input string' });
         }
 
-        response.type = matches[1];
-        response.data = matches[2];
-
-        fs.writeFileSync(SESSION_FILE_PATH, response.data, 'base64');
-
-        res.status(200).json(response);
+        qrCodeData = matches[2];
+        fs.writeFileSync(SESSION_FILE_PATH, qrCodeData, 'base64');
       },
       logQR: false,
     });
 
     start(client);
+
+    if (qrCodeData) {
+      return res.status(200).json({ type: 'image/png', data: qrCodeData });
+    } else {
+      return res.status(500).json({ error: 'No QR code data available' });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Error initializing bot' });
   }
 });
+
 
 function start(client) {
   client.onMessage((message) => {
