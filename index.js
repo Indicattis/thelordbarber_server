@@ -2,9 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 const cron = require('node-cron');
-const db = require ('./db.js');
-const { inserirHorarios } = require('./rotina.js');
-const inserirAgendamentosAutomaticos = require ('./recurrence.js');
+const InsertSchedules = require('./rotina.js');
+const InsertAppointments = require ('./recurrence.js');
 
 const app = express();
 app.use(express.json());
@@ -21,19 +20,11 @@ app.get('/', (req, res) =>{
 
  
 cron.schedule('0 0 15 * *', () => {
-    db.query('SELECT id FROM barbeiros', (error, results) => {
-        if (error) {
-            console.error('Erro ao obter os IDs dos barbeiros:', error);
-            return;
-        }
-        
-        const idBarbeiros = results.map((row) => row.id);
-        inserirHorarios(idBarbeiros);
-    });
+    InsertSchedules()
 });
 
-cron.schedule('0 0 15 * *', () => {
-    inserirAgendamentosAutomaticos();
+cron.schedule('10 0 15 * *', () => {
+    InsertAppointments();
     res.send('Rotina de agendamentos acionada com sucesso!');
 })
 
@@ -41,16 +32,16 @@ cron.schedule('0 0 15 * *', () => {
 // ####################################### ROTEAMENTO ##################################################
 
 // # CLIENTES
-const clientesRouter = require ('./api/clientes.js');
-const getClientDetails = require ('./api/get/cliente.js');
-const getClientName = require ('./api/get/cliente-name.js');
-const getClientNameOnly = require ('./api/get/cliente-name-only.js');
-const getClientPhone = require ('./api/get/cliente-number.js');
-const getClientImage = require ('./api/get/cliente-image.js');
-const clientLogin = require ('./api/auth/client-login.js');
-const clientSetAll = require ('./api/modify/client-all.js');
-const insertClient = require ('./api/insert/client.js');
-const deleteCliente = require ('./api/delete/cliente.js');
+const GetClients = require ('./api/clientes.js');
+const GetClientDetails = require ('./api/get/cliente.js');
+const VerifyClient = require ('./api/get/cliente-name.js');
+const GetClientName = require ('./api/get/cliente-name-only.js');
+const GetClientPhone = require ('./api/get/cliente-number.js');
+const GetClientImage = require ('./api/get/cliente-image.js');
+const LoginClient = require ('./api/auth/client-login.js');
+const AlterClient = require ('./api/modify/client-all.js');
+const InsertClient = require ('./api/insert/client.js');
+const DeleteClient = require ('./api/delete/cliente.js');
 const AlterClientName = require('./api/modify/alter-client-name.js');
 const AlterClientPass = require('./api/modify/alter-client-password.js');
 
@@ -96,7 +87,7 @@ app.use('/horarios', horariosRouter);
 
 app.use('/barbeiros', barbeirosRouter); 
 
-app.use('/clientes', clientesRouter);
+app.use('/clientes', GetClients);
 
 app.use('/agendamentos-barbeiro-dia', agendamentosBarber);
 
@@ -110,19 +101,19 @@ app.use('/horarios-barbeiro-mes', horariosMes);
 
 app.use('/agendamentos-dia', agendamentosDia);
 
-app.use('/clientes-id', getClientDetails);
+app.use('/clientes-id', GetClientDetails);
 
 app.use('/barber-id', getBarberDetails);
 
-app.use('/cliente-name', getClientName);
+app.use('/cliente-name', VerifyClient);
 
-app.use('/cliente-name-only', getClientNameOnly);
+app.use('/cliente-name-only', GetClientName);
 
 app.use('/barber-name-only', getBarberNameOnly);
 
-app.use('/cliente-phone', getClientPhone);
+app.use('/cliente-phone', GetClientPhone);
 
-app.use('/cliente-image', getClientImage);
+app.use('/cliente-image', GetClientImage);
 
 app.use('/agendamento-id', getAgendamento);
 
@@ -132,17 +123,17 @@ app.use('/insights-mes', insightsMonth);
 
 app.use('/admin-login', adminLogin);
 
-app.use('/client-login', clientLogin);
+app.use('/client-login', LoginClient);
 
 app.use('/admin-set-all', adminSetAll);
 
 app.use('/admin-set-password', adminSetPassword);
 
-app.use('/cliente-set-all', clientSetAll);
+app.use('/cliente-set-all', AlterClient);
 
 app.use('/post-insert-barber', insertBarber);
 
-app.use('/post-insert-client', insertClient);
+app.use('/post-insert-client', InsertClient);
 
 app.use('/post-insert-agendamento', insertAgendamento);
 
@@ -150,7 +141,7 @@ app.use('/admin-set-image', adminSetImage);
 
 app.use('/post-delete-agendamento', deleteAgendamento);
 
-app.use('/post-delete-cliente', deleteCliente);
+app.use('/post-delete-cliente', DeleteClient);
 
 app.use('/post-delete-barbeiro', deleteBarbeiro);
 
@@ -165,7 +156,7 @@ app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 app.use('/horarios-status', getHorariosStatus);
 
 app.post('/rotina-recorrentes', (req, res) => {
-inserirAgendamentosAutomaticos();
+InsertAppointments();
 res.send('Rotina de agendamentos acionada com sucesso!');
 });
 

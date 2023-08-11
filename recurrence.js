@@ -54,7 +54,7 @@ function calcularProximaData(recurrence_day, recurrence_hour) {
 
 
 // Função para inserir os agendamentos automáticos para os clientes com recurrence = 1
-function inserirAgendamentosAutomaticos() {
+function InsertAppointments() {
     const query = `SELECT * FROM clientes WHERE recurrence = 1`;
 
     db.query(query, (error, results) => {
@@ -134,4 +134,4 @@ function inserirAgendamentosAutomaticos() {
     });
 }
 
-module.exports = inserirAgendamentosAutomaticos;
+module.exports = InsertAppointments;

@@ -1,8 +1,6 @@
 
-const fs = require('fs');
 const wppconnect = require('@wppconnect-team/wppconnect');
 const express = require ('express');
-const db = require ('../db.js');
 const cors = require ('cors');
 
 
@@ -12,7 +10,7 @@ app.use(cors());
 
 const router = express.Router();
 
-function initBot() {
+router.get('/init-bot', (req, res) => {
     wppconnect
       .create({
         session: 'sessionName',
@@ -30,7 +28,7 @@ function initBot() {
   
           // Send the QR code as a response to the frontend
           // Note: You should handle the response type and status appropriately based on your API setup.
-          res.json(response);
+          res.status(200).json(response);
         },
         logQR: false,
       })
@@ -41,7 +39,7 @@ function initBot() {
       client.onMessage((message) => {
         if (message.body === 'Olá') {
           client
-            .sendText(message.from, 'Bem vindo ao assistente virtual The Lord! Como posso lhe ajudar? \n\n 1 - Agendamento \n 2 - Cortes e Serviços ✂️ \n 3 - Suporte ao Usuário 👤')
+            .sendText(message.from, 'Olá! Bem-vindo ao assistente virtual The Lord! Como posso lhe ajudar? \n\n 1 - Agendamento 🗓️ \n 2 - Cortes e Serviços ✂️ \n 3 - Suporte ao Usuário 👤')
             .then((result) => {
               console.log('Result: ', result); //return object success
             })
@@ -62,5 +60,7 @@ function initBot() {
       });
 }
 }
-
+)
 // initBot()
+
+module.exports = router
