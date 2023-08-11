@@ -97,7 +97,7 @@ function InsertAppointments() {
                             formattedTime,
                             'Mensalista', 
                             '0', 
-                            '1', // Adicione aqui o ID do barbeiro
+                            '1',
                             id
                         ];
 
