@@ -2,7 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
-const wppconnect = require('wppconnect'); // Certifique-se de instalar a biblioteca corretamente usando: npm install wppconnect
+const wppconnect = require('@wppconnect-team/wppconnect');
 
 const SESSION_FILE_PATH = 'out.png';
 
