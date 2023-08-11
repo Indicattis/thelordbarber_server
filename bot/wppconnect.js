@@ -14,8 +14,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   if (fs.existsSync(SESSION_FILE_PATH)) {
-    const qrCodeData = fs.readFileSync(SESSION_FILE_PATH);
-    return res.status(200).json({ type: 'image/png', data: qrCodeData.toString('base64') });
+    return res.status(200).json({ qrCodePath: SESSION_FILE_PATH });
   }
 
   try {
@@ -39,7 +38,7 @@ router.get('/', async (req, res) => {
     start(client);
 
     if (qrCodeData) {
-      return res.status(200).json({ type: 'image/png', data: qrCodeData });
+      return res.status(200).json({ qrCodePath: SESSION_FILE_PATH });
     } else {
       return res.status(500).json({ error: 'No QR code data available' });
     }
@@ -47,6 +46,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Error initializing bot' });
   }
 });
+
 
 
 function start(client) {
