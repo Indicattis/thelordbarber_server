@@ -1,47 +1,24 @@
-2023/08/14-19:22:03.940 39a8 Reusing MANIFEST D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/08/14-19:22:03.941 39a8 Recovering log #4523
-2023/08/14-19:22:03.969 39a8 Reusing old log D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/004523.log 
-2023/08/14-19:22:03.969 39a8 Delete type=2 #4522
-2023/08/14-19:22:03.976 47c8 Level-0 table #4528: started
-2023/08/14-19:22:03.989 47c8 Level-0 table #4528: 540286 bytes OK
-2023/08/14-19:22:03.990 47c8 Delete type=0 #4523
-2023/08/14-19:22:03.990 47c8 Manual compaction at level-0 from ' 5\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' 6\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
-2023/08/14-19:22:03.995 39a8 Level-0 table #4530: started
-2023/08/14-19:22:03.999 39a8 Level-0 table #4530: 6212 bytes OK
-2023/08/14-19:22:04.000 39a8 Delete type=0 #4527
-2023/08/14-19:22:04.000 39a8 Manual compaction at level-0 from ' 4\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' 5\x01\x00\x00\x00' @ 0 : 0; will stop at ' 6\x01\x00\x00\xc8\x11\x00w\x00o\x00r\x00k\x00e\x00r\x00_\x00w\x00a\x00m\x00_\x00e\x00v\x00e\x00n\x00t\x00s' @ 20343552 : 1
-2023/08/14-19:22:04.000 39a8 Compacting 1@0 + 1@1 files
-2023/08/14-19:22:04.013 39a8 Generated table #4531@0: 17416 keys, 304072 bytes
-2023/08/14-19:22:04.013 39a8 Compacted 1@0 + 1@1 files => 304072 bytes
-2023/08/14-19:22:04.014 39a8 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/08/14-19:22:04.014 39a8 Delete type=2 #4530
-2023/08/14-19:22:04.014 39a8 Manual compaction at level-0 from ' 6\x01\x00\x00\xc8\x11\x00w\x00o\x00r\x00k\x00e\x00r\x00_\x00w\x00a\x00m\x00_\x00e\x00v\x00e\x00n\x00t\x00s' @ 20343552 : 1 .. ' 5\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
-2023/08/14-19:22:04.015 47d4 Level-0 table #4533: started
-2023/08/14-19:22:04.017 47d4 Level-0 table #4533: 717 bytes OK
-2023/08/14-19:22:04.019 47d4 Delete type=2 #4528
-2023/08/14-19:22:04.019 47d4 Delete type=0 #4529
-2023/08/14-19:22:04.019 47d4 Manual compaction at level-0 from ' 3\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' 4\x01\x00\x00\x00' @ 0 : 0; will stop at ' 3\x01\x02\x02\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 20343696 : 0
-2023/08/14-19:22:04.019 47d4 Compacting 1@0 + 1@1 files
-2023/08/14-19:22:04.029 47d4 Generated table #4534@0: 17395 keys, 303524 bytes
-2023/08/14-19:22:04.029 47d4 Compacted 1@0 + 1@1 files => 303524 bytes
-2023/08/14-19:22:04.031 47d4 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/08/14-19:22:04.031 47d4 Delete type=2 #4533
-2023/08/14-19:22:04.031 47d4 Manual compaction at level-0 from ' 3\x01\x02\x02\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 20343696 : 0 .. ' 4\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
-2023/08/14-19:22:04.038 47d4 Level-0 table #4536: started
-2023/08/14-19:22:04.041 47d4 Level-0 table #4536: 82877 bytes OK
-2023/08/14-19:22:04.043 47d4 Delete type=2 #4531
-2023/08/14-19:22:04.043 47d4 Delete type=0 #4532
-2023/08/14-19:22:04.043 47d4 Manual compaction at level-0 from ' 2\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' 3\x01\x00\x00\x00' @ 0 : 0; will stop at ' 2\x01\x06 \x03\x00\x00\x00\x00\x00\x80V@\x00\x01\x0b\x00I\x00d\x00T\x00t\x00l\x009\x000\x00D\x00a\x00y\x00s' @ 20350310 : 0
-2023/08/14-19:22:04.043 47d4 Compacting 1@0 + 1@1 files
-2023/08/14-19:22:04.052 47d4 Generated table #4537@0: 11054 keys, 94486 bytes
-2023/08/14-19:22:04.052 47d4 Compacted 1@0 + 1@1 files => 94486 bytes
-2023/08/14-19:22:04.053 47d4 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/08/14-19:22:04.053 47d4 Delete type=2 #4536
-2023/08/14-19:22:04.053 47d4 Manual compaction at level-0 from ' 2\x01\x06 \x03\x00\x00\x00\x00\x00\x80V@\x00\x01\x0b\x00I\x00d\x00T\x00t\x00l\x009\x000\x00D\x00a\x00y\x00s' @ 20350310 : 0 .. ' 3\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
-2023/08/14-19:22:04.053 47d4 Manual compaction at level-1 from ' 2\x01\x00\x00\x00' @ 72057594037927935 : 1 .. ' 3\x01\x00\x00\x00' @ 0 : 0; will stop at ' 6\x01\x00\x00\xc8\x11\x00w\x00o\x00r\x00k\x00e\x00r\x00_\x00w\x00a\x00m\x00_\x00e\x00v\x00e\x00n\x00t\x00s' @ 20343552 : 1
-2023/08/14-19:22:04.053 47d4 Compacting 1@1 + 1@2 files
-2023/08/14-19:22:04.056 47d4 Generated table #4538@1: 324 keys, 4685 bytes
-2023/08/14-19:22:04.056 47d4 Compacted 1@1 + 1@2 files => 4685 bytes
-2023/08/14-19:22:04.057 47d4 compacted to: files[ 0 0 1 0 0 0 0 ]
-2023/08/14-19:22:04.057 47d4 Delete type=2 #4537
-2023/08/14-19:22:04.058 47d4 Manual compaction at level-1 from ' 6\x01\x00\x00\xc8\x11\x00w\x00o\x00r\x00k\x00e\x00r\x00_\x00w\x00a\x00m\x00_\x00e\x00v\x00e\x00n\x00t\x00s' @ 20343552 : 1 .. ' 3\x01\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/08/15-17:22:13.045 3560 Reusing MANIFEST D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/08/15-17:22:13.047 3560 Recovering log #6971
+2023/08/15-17:22:13.051 3560 Reusing old log D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/006971.log 
+2023/08/15-17:22:30.082 3560 Compacting 1@1 + 10@2 files
+2023/08/15-17:22:30.139 3560 Generated table #6999@1: 104210 keys, 2253437 bytes
+2023/08/15-17:22:30.197 3560 Generated table #7000@1: 99265 keys, 2249778 bytes
+2023/08/15-17:22:30.252 3560 Generated table #7001@1: 96962 keys, 2245737 bytes
+2023/08/15-17:22:30.305 3560 Generated table #7002@1: 99865 keys, 2250316 bytes
+2023/08/15-17:22:30.365 3560 Generated table #7003@1: 101358 keys, 2251093 bytes
+2023/08/15-17:22:30.444 3560 Generated table #7004@1: 98178 keys, 2246940 bytes
+2023/08/15-17:22:30.508 3560 Generated table #7005@1: 56264 keys, 1263653 bytes
+2023/08/15-17:22:30.508 3560 Compacted 1@1 + 10@2 files => 14760954 bytes
+2023/08/15-17:22:30.509 3560 compacted to: files[ 0 0 31 0 0 0 0 ]
+2023/08/15-17:22:30.510 3560 Delete type=2 #6899
+2023/08/15-17:22:30.510 3560 Delete type=2 #6930
+2023/08/15-17:22:30.510 3560 Delete type=2 #6963
+2023/08/15-17:22:30.510 3560 Delete type=2 #6964
+2023/08/15-17:22:30.510 3560 Delete type=2 #6965
+2023/08/15-17:22:30.510 3560 Delete type=2 #6966
+2023/08/15-17:22:30.510 3560 Delete type=2 #6967
+2023/08/15-17:22:30.510 3560 Delete type=2 #6968
+2023/08/15-17:22:30.510 3560 Delete type=2 #6969
+2023/08/15-17:22:30.510 3560 Delete type=2 #6970
+2023/08/15-17:22:30.510 3560 Delete type=2 #6975

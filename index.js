@@ -82,6 +82,7 @@ const getHorariosStatus = require('./api/analytics/horarios-status.js'); // Impo
 // # INSIGHTS
 const insightsBarber = require ('./api/analytics/insights-barber.js');
 const insightsMonth = require ('./api/analytics/insights-mes.js');
+const ClientProgress = require ('./api/analytics/client-progress.js');
 
 // # BOT
 const StartBot = require('./bot/wppconnect.js')
@@ -161,6 +162,8 @@ app.use('/horario-status', changeStatusHorario)
 app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 
 app.use('/horarios-status', getHorariosStatus);
+
+app.use('/client-progress', ClientProgress);
 
 app.post('/rotina-recorrentes', (req, res) => {
 InsertAppointments();
