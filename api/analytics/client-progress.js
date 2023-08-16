@@ -13,9 +13,9 @@ router.get("/:id_cliente", (req, res) => {
     const { id_cliente } = req.params;
 
     const sqlQuery = `
-      SELECT COUNT(*) AS totalAppointments
-      FROM agendamentos
-      WHERE id_cliente = ? AND DATE(day) >= DATE_SUB(CURDATE(), INTERVAL 90 DAY)
+    SELECT COUNT(*) AS totalAppointments
+    FROM agendamentos
+    WHERE id_cliente = ? AND DATE(day) <= DATE_SUB(CURDATE(), INTERVAL 60 DAY);    
     `;
 
     db.query(sqlQuery, [id_cliente], (error, results) => {
