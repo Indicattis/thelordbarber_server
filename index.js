@@ -67,6 +67,7 @@ const getAgendamento = require ('./api/get/agendamento.js');
 const insertAgendamento = require ('./api/insert/agendamento.js');
 const deleteAgendamento = require ('./api/delete/agendamento.js');
 const insertAgendamentosRecorrentesCliete = require ('./api/insert/recorretes.js')
+const DeleteAgendamentosCliente = require('./api/delete/agendamentos-cliente.js')
 
 
 // # HORARIOS
@@ -164,6 +165,8 @@ app.use('/insert-recorrentes-cliente', insertAgendamentosRecorrentesCliete)
 app.use('/horarios-status', getHorariosStatus);
 
 app.use('/client-progress', ClientProgress);
+
+app.use('/delete-agendamentos-cliente', DeleteAgendamentosCliente)
 
 app.post('/rotina-recorrentes', (req, res) => {
 InsertAppointments();
