@@ -15,7 +15,7 @@ router.get("/:id_cliente", (req, res) => {
     const sqlQuery = `
     SELECT COUNT(*) AS totalAppointments
     FROM agendamentos
-    WHERE id_cliente = ? AND DATE(day) <= DATE_SUB(CURDATE());
+    WHERE id_cliente = ? AND DATE(day) <= CURDATE();
     `;
 
     db.query(sqlQuery, [id_cliente], (error, results) => {
