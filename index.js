@@ -84,11 +84,14 @@ const getHorariosStatus = require('./api/analytics/horarios-status.js'); // Impo
 const insightsBarber = require ('./api/analytics/insights-barber.js');
 const insightsMonth = require ('./api/analytics/insights-mes.js');
 const ClientProgress = require ('./api/analytics/client-progress.js');
+const RecurrenceUsers = require ('./api/analytics/insights-recurrent-users.js');
+
 
 // # BOT
 const StartBot = require('./bot/wppconnect.js')
 
 
+app.use('/insights-recurrence-users', RecurrenceUsers)
 
 app.use('/init-bot', StartBot)
 
