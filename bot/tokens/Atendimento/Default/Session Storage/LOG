@@ -1,3 +1,2 @@
-2023/08/15-17:24:25.275 2288 Reusing MANIFEST D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\Session Storage/MANIFEST-000001
-2023/08/15-17:24:25.275 2288 Recovering log #3
-2023/08/15-17:24:25.276 2288 Reusing old log D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\Session Storage/000003.log 
+2023/08/25-12:08:18.595 5c98 Creating DB D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\Session Storage since it was missing.
+2023/08/25-12:08:18.599 5c98 Reusing MANIFEST D:\Repositories\thelordbarber_server\bot\tokens\Atendimento\Default\Session Storage/MANIFEST-000001

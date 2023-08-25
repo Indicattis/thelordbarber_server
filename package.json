@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wppconnect-team/wppconnect": "^1.27.3",
+    "@wppconnect-team/wppconnect": "^1.28.0",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "cron": "^2.4.0",

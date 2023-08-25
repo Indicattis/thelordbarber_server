@@ -106,7 +106,7 @@ function evaluateAndReturn(page, pageFunction) {
                         jsStack = error.stack;
                         Error.captureStackTrace(error);
                         if (jsStack) {
-                            error.stack = (error.stack || '') + '\nJS Stack: ' + jsStack;
+                            error.stack = "".concat(error.stack || '', "\nJS Stack: ").concat(jsStack, "\nFunction: ").concat(functionText);
                         }
                         throw error;
                     }
