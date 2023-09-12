@@ -91,6 +91,18 @@ const RecurrenceUsers = require ('./api/analytics/insights-recurrent-users.js');
 const StartBot = require('./bot/wppconnect.js')
 
 
+// # GIFTS
+const InsertGifts = require('./api/gifts/insert-gifts.js');
+const GetGifts = require('./api/gifts/get-gifts.js');
+const UpdateGift = require('./api/gifts/rescue-gift.js');
+
+
+app.use('/insert-gifts', InsertGifts)
+
+app.use('/rescue-gift', UpdateGift)
+
+app.use('/get-gifts', GetGifts)
+
 app.use('/insights-recurrence-users', RecurrenceUsers)
 
 app.use('/init-bot', StartBot)
